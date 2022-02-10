@@ -26,8 +26,11 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.user = new User();
+    // this.logout();
+//     const user = await this.userService.getActiveUser();
+// console.log(user)
   }
   async enroll() {
     try {
@@ -49,8 +52,7 @@ export class LoginPageComponent implements OnInit {
         let password = this.loginFormGroup.controls.password.value;
         const user = await this.userService.login(mail, password);
         this.UserDataService.setUserId(user);
-        let route = '/dashboard/' + user._id;
-        this.router.navigate([route]);
+        this.router.navigate(['/dashboard']);
         this.loginEnabled = true;
         this.loginUnderProcess = false;
         this.submitted = false;
