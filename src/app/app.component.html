@@ -3,7 +3,10 @@
     <img src="assets/images/logo.png" alt="">
   </div>
   <div class="header-info d-flex justify-content-center align-items-center">
-    <p class="m-0">Manage your groups & contacts</p>
+    <p class="m-0">{{ headerTitle }}</p>
   </div>
 </div>
 <router-outlet></router-outlet>
+<div class="footer d-flex justify-content-center align-items-center">
+  <marquee>{{footerText}}</marquee>
+</div>

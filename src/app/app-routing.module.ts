@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
   { path: '404', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/404', pathMatch: 'full' }
 ];

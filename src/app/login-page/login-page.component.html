@@ -23,8 +23,8 @@
         <input type="password" class="mb-2 w-100">
       </div>
       <div class="login-footer d-flex justify-content-left">
-        <button (click)="loginEnabled = true" class="mr-2">Login</button>
-        <button (click)="loginEnabled = false">Register</button>
+        <button (click)="login()" [disabled]="underProcess" class="mr-2">Login</button>
+        <button (click)="loginEnabled = false" [disabled]="underProcess">Register</button>
       </div> 
     </form>
   </div>
