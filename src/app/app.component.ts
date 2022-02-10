@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PingService } from 'kinvey-angular-sdk';
+import { UserService } from 'kinvey-angular-sdk';
+import { User } from './shared/models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +9,43 @@ import { PingService } from 'kinvey-angular-sdk';
 })
 export class AppComponent implements OnInit {
   title = 'contactsList';
-  constructor(private pingService: PingService) {}
+  user: User;
+  constructor(private userService: UserService) { }
   ngOnInit(): void {
-      this.verify();
+    this.user = new User();
+    // this.login();
+    // this.logout();
+    // this.enroll();
   }
-  async verify() {
+  async enroll() {
     try {
-      const response = await this.pingService.ping();
-      console.log("Kinvey is up! "
-                 + "Version: " + response.version
-                 + " Response: " + response.kinvey
-      );
+      const user = await this.userService.signup({
+        username: 'test2',
+        password: 'test2', firstname: 'fn', lastname: 'ln'
+      });
+      console.log(user);
     } catch (error) {
-      console.log("Kinvey Ping Failed. Response: ${error.description}");
+      console.log(error);
+    }
+  }
+  async invalidateTokens() {
+    const user = await this.userService.getActiveUser();
+    console.log(user)
+  }
+  async login() {
+    try {
+      const user = await this.userService.login('vivek', 'vivek');
+      console.log(user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async logout() {
+    try {
+      await this.userService.logout();
+      console.log('e')
+    } catch (error) {
+      console.log(error);
     }
   }
 }

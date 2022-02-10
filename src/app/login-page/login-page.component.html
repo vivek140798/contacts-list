@@ -4,15 +4,27 @@
       <div class="login-header">
         <p class="m-0">Login</p>
       </div>
-      <div class="login-body">
+      <div *ngIf="loginEnabled" class="login-body">
+        <label>Email</label><br>
+        <input type="text" class="mb-2 w-100"><br>
+        <label>Password</label><br>
+        <input type="password" class="mb-2 w-100">
+      </div>
+      <div *ngIf="!loginEnabled" class="login-body">
+        <label>FirstName</label><br>
+        <input type="text" class="mb-2 w-100"><br>
+        <label>LastName</label><br>
+        <input type="text" class="mb-2 w-100"><br>
+        <label>Aadhar</label><br>
+        <input type="text" class="mb-2 w-100"><br>
         <label>Email</label><br>
         <input type="text" class="mb-2 w-100"><br>
         <label>Password</label><br>
         <input type="password" class="mb-2 w-100">
       </div>
       <div class="login-footer d-flex justify-content-left">
-        <button class="mr-2">Login</button>
-        <button>Register</button>
+        <button (click)="loginEnabled = true" class="mr-2">Login</button>
+        <button (click)="loginEnabled = false">Register</button>
       </div> 
     </form>
   </div>

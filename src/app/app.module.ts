@@ -1,28 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KinveyModule } from 'kinvey-angular-sdk';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
-    PageNotFoundComponent
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     KinveyModule.init({
-      appKey: 'kid_B1LPmPWy9',
-      appSecret: '526438b3fe1f4b34a4b1648c55a1e1a8',
+      appKey: 'kid_HynjBHMJc',
+      appSecret: '0aece13e63a94f058fa9bb222fc0cae0',
     }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
