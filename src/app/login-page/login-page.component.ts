@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'kinvey-angular-sdk';
 import { UserDataService } from '../shared/services/user-data.service';
 import { User } from '../shared/models/user.model';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -9,10 +11,20 @@ import { User } from '../shared/models/user.model';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  loginEnabled:boolean = true;
+  loginEnabled: boolean = true;
   user: User;
-  underProcess:boolean = false;
-  constructor(private userService: UserService, private UserDataService: UserDataService) { }
+  loginUnderProcess: boolean = false;
+  signupUnderProcess: boolean = false;
+  loginFormGroup: FormGroup;
+  submitted: boolean = false;
+
+  constructor(private userService: UserService, private UserDataService: UserDataService, private formBuilder: FormBuilder, private router: Router
+  ) {
+    this.loginFormGroup = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
     this.user = new User();
@@ -29,14 +41,27 @@ export class LoginPageComponent implements OnInit {
     }
   }
   async login() {
-    try {
-      this.underProcess = true;
-      const user = await this.userService.login('vivek', 'vivek');
-      this.loginEnabled = true;
-      this.underProcess = false;
-    } catch (error) {
-      this.underProcess = false;
-      console.log(error);
+    this.submitted = true;
+    this.loginUnderProcess = true;
+    if (this.loginFormGroup.valid) {
+      try {
+        let mail = this.loginFormGroup.controls.email.value;
+        let password = this.loginFormGroup.controls.password.value;
+        const user = await this.userService.login(mail, password);
+        this.UserDataService.setUserId(user);
+        let route = '/dashboard/' + user._id;
+        this.router.navigate([route]);
+        this.loginEnabled = true;
+        this.loginUnderProcess = false;
+        this.submitted = false;
+      } catch (error) {
+        this.loginUnderProcess = false;
+        this.submitted = false;
+        console.log(error);
+      }
+    }
+    else {
+      this.loginUnderProcess = false;
     }
   }
   async logout() {

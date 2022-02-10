@@ -25,6 +25,9 @@
                 height: 35px;
                 border-radius: 5px;
             }
+            input.submitted.ng-invalid {
+                border: 1px solid #f00;
+            }
         }
         .login-footer{
             padding: 0px 16px 16px 16px;
@@ -35,6 +38,18 @@
                 &:hover{
                     background-color: $blue;
                     color: white;
+                }
+                &:disabled{
+                    background-color: unset;
+                    color: unset;
+                    cursor: unset;
+                }
+                .spinner-border-sm{
+                    width: 0.75rem;
+                    height: 0.75rem;
+                }
+                .text-blue{
+                    color: $blue;
                 }
             }
         }
