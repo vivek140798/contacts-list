@@ -28,30 +28,6 @@
             }
         }
     }
-    .dropdown{
-        button{
-            background-color: lightblue;
-            color: black;
-            width: 180px;
-            &:active{
-                background-color: lightblue;
-                color: black;
-            }
-        }
-        ul{
-            width: 180px;
-            li{
-                cursor: pointer;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                &:hover{
-                    background-color: $blue;
-                    color: white;
-                }
-            }
-        }
-    }
     .contacts-wrap{
         overflow: scroll;
         &::-webkit-scrollbar {
@@ -76,12 +52,5 @@
                 }
             }
         }
-    }
-}
-
-#exampleModal{
-    input, select{
-        height: 40px;
-        border-radius: 10px;
     }
 }

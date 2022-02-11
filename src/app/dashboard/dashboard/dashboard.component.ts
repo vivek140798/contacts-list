@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataStoreService } from 'kinvey-angular-sdk';
 import { UserDataService } from '../../shared/services/user-data.service';
 import { UserService } from 'kinvey-angular-sdk';
-
+import { EditorDilogComponent } from './../../shared/components/editor-dilog/editor-dilog.component';
+import { EditorDialog } from './../../shared/components/editor-dilog/editor-dialog.model';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,12 +14,25 @@ export class DashboardComponent implements OnInit {
   selectedGroup:string = '';
   collection: any;
   contacts = new Array(10);
-  constructor(private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
+  constructor(public dialog: MatDialog, private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
     this.collection = datastoreService.collection('groups');
   }
 
   ngOnInit() {
     // this.update();
+  }
+
+  openEditorDialog(record, title, actionText1, actionText2) {
+    const dialogData = new EditorDialog(record, title, actionText1, actionText2);
+    const dialogRef = this.dialog.open(EditorDilogComponent, {
+      data: dialogData,
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== 'cancelled') {
+        
+      }
+    });
   }
 
   async createGroup() {
