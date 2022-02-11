@@ -11,7 +11,9 @@ import { MaterialModule } from '../material/material.module';
     MaterialModule
   ],
   exports:[
-    PageNotFoundComponent
-  ]
+    PageNotFoundComponent,
+    EditorDilogComponent
+  ],
+  entryComponents: [EditorDilogComponent]
 })
 export class SharedModule { }
