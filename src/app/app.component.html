@@ -5,8 +5,20 @@
   <div class="header-info d-flex justify-content-center align-items-center">
     <p class="m-0">{{ headerTitle }}</p>
   </div>
+  <div  *ngIf="!isLoginPage" class="logout-wrap d-flex justify-content-center align-items-center">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="vert-icon">more_vert</mat-icon>
+    </button>
+  </div>
 </div>
 <router-outlet></router-outlet>
 <div class="footer d-flex justify-content-center align-items-center">
   <marquee>{{footerText}}</marquee>
 </div>
+
+<mat-menu #menu="matMenu">
+  <button (click)="logout()" mat-menu-item>
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

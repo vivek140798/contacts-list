@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserDataService {
-  userId:any;
+  userId:any = null;
   constructor() { }
 
   setUserId(id){

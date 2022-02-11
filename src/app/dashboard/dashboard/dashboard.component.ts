@@ -5,21 +5,21 @@ import { UserService } from 'kinvey-angular-sdk';
 import { EditorDilogComponent } from './../../shared/components/editor-dilog/editor-dilog.component';
 import { EditorDialog } from './../../shared/components/editor-dilog/editor-dialog.model';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  selectedGroup:string = '';
+  selectedGroup: string = '';
   collection: any;
   contacts = new Array(10);
-  constructor(public dialog: MatDialog, private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
+  constructor(public router: Router, public dialog: MatDialog, private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
     this.collection = datastoreService.collection('groups');
   }
 
   ngOnInit() {
-    // this.update();
   }
 
   openEditorDialog(record, title, actionText1, actionText2) {
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== 'cancelled') {
-        
+
       }
     });
   }
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
   async createGroup() {
     try {
       let data = this.UserDataService.getUserId();
-      let obj={groupname: 'test', status: 'active'}
+      let obj = { groupname: 'test', status: 'active' }
       const savedEntity = await this.collection.save(obj);
       console.log(savedEntity);
     } catch (error) {
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
   async update() {
     try {
-      let obj={_id: '620582aadc6dd8001693c400',groupname: 'demo'}
+      let obj = { _id: '620582aadc6dd8001693c400', groupname: 'demo' }
       const user = await this.collection.update(obj);
       console.log(user);
     } catch (error) {

@@ -24,6 +24,13 @@
             font-size: 14px;
         }
     }
+    .logout-wrap{
+        height: 64px;
+        background: $blue;
+        @media (max-width: 480px) {
+            height: 44px;
+        }
+    }
 }
 .footer{
     width: 100%;
@@ -32,4 +39,17 @@
     height: 40px;
     background: $blue;
     color: white;
+}
+.logout-wrap{
+    .vert-icon{
+        color: white;
+    }
+}
+::ng-deep {
+    .mat-menu-content{
+        padding: 0px !important;
+        button{
+            border-radius: 5px;
+        }
+    }
 }

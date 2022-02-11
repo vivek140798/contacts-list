@@ -18,8 +18,8 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     AppRoutingModule,
     KinveyModule.init({
-      appKey: 'kid_HynjBHMJc',
-      appSecret: '0aece13e63a94f058fa9bb222fc0cae0',
+      appKey: 'kid_S16dn3Qkq',
+      appSecret: 'c0c3312571664466acda3e17bcf3bb21',
     }),
     FormsModule,
     ReactiveFormsModule,
