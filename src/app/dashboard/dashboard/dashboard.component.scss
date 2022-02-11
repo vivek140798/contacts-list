@@ -28,4 +28,13 @@
             }
         }
     }
+    .edit-btn {
+        button {
+            border-radius: 10px;
+            &:hover {
+                background-color: $blue;
+                color: white;
+            }
+        }
+    }
 }

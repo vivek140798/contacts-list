@@ -14,7 +14,8 @@ import { TableGridComponent } from './components/table-grid/table-grid.component
   exports:[
     PageNotFoundComponent,
     EditorDilogComponent,
-    TableGridComponent
+    TableGridComponent,
+    MaterialModule
   ],
   entryComponents: [EditorDilogComponent]
 })

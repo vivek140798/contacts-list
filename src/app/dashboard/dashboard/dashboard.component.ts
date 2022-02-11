@@ -7,6 +7,7 @@ import { EditorDialog } from './../../shared/components/editor-dilog/editor-dial
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TableConfig } from './../../shared/models/table-config.model';
+import axios from 'axios'
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,7 @@ export class DashboardComponent implements OnInit {
   collection: any;
   public tableConfigData: TableConfig;
   constructor(public router: Router, public dialog: MatDialog, private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
-    this.collection = datastoreService.collection('groups');
+    this.collection = datastoreService.collection('Inventory');
   }
 
   ngOnInit() {
@@ -27,13 +28,13 @@ export class DashboardComponent implements OnInit {
   }
 
   frameTableConfgiData() {
-    this.tableConfigData.headers = ['a','b','c','d'];
-    this.tableConfigData.data = [{},{},{},{},{}];
-    this.tableConfigData.keys = ['a','b','c'];
+    this.tableConfigData.headers = ['Group Name', 'Status', 'Modify'];
+    this.tableConfigData.data = [{}];
+    this.tableConfigData.keys = ['groupname', 'status'];
   }
 
-  openEditorDialog(record, title, actionText1, actionText2) {
-    const dialogData = new EditorDialog(record, title, actionText1, actionText2);
+  openEditorDialog(title, record, actionText1, actionText2) {
+    const dialogData = new EditorDialog(title, record, actionText1, actionText2);
     const dialogRef = this.dialog.open(EditorDilogComponent, {
       data: dialogData,
       disableClose: true,
@@ -43,6 +44,10 @@ export class DashboardComponent implements OnInit {
 
       }
     });
+  }
+
+  create(){
+    this.openEditorDialog('Create a Group', null,'Save','Cancel');
   }
 
   async createGroup() {
@@ -74,7 +79,7 @@ export class DashboardComponent implements OnInit {
       console.log(error);
     }
   }
-  updateEntry(e){
+  updateEntry(e) {
 
   }
 

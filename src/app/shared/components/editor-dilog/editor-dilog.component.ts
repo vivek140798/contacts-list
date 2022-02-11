@@ -26,7 +26,11 @@ export class EditorDilogComponent implements OnInit {
   }
 
   onConfirm(): void {
-    this.dialogRef.close('data');
+    let data = {
+      groupname: 'GN',
+      status: 'Active'
+    };
+    this.dialogRef.close(data);
   }
 
   onDismiss(): void {
