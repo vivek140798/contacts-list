@@ -1,9 +1,9 @@
 @import "../assets/scss/_variables.scss";
 
-.header-wrap{
-    .logo{
+.header-wrap {
+    .logo {
         border: 2px solid $blue;
-        img{
+        img {
             height: 60px;
             padding: 8px;
             @media (max-width: 480px) {
@@ -12,7 +12,7 @@
             }
         }
     }
-    .header-info{
+    .header-info {
         width: 100%;
         height: 64px;
         background: $blue;
@@ -24,7 +24,7 @@
             font-size: 14px;
         }
     }
-    .logout-wrap{
+    .logout-wrap {
         height: 64px;
         background: $blue;
         @media (max-width: 480px) {
@@ -32,7 +32,7 @@
         }
     }
 }
-.footer{
+.footer {
     width: 100%;
     position: fixed;
     bottom: 0px;
@@ -40,15 +40,15 @@
     background: $blue;
     color: white;
 }
-.logout-wrap{
-    .vert-icon{
+.logout-wrap {
+    .vert-icon {
         color: white;
     }
 }
 ::ng-deep {
-    .mat-menu-content{
+    .mat-menu-content {
         padding: 0px !important;
-        button{
+        button {
             border-radius: 5px;
         }
     }

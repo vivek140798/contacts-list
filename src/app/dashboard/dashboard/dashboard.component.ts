@@ -6,6 +6,8 @@ import { EditorDilogComponent } from './../../shared/components/editor-dilog/edi
 import { EditorDialog } from './../../shared/components/editor-dilog/editor-dialog.model';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TableConfig } from './../../shared/models/table-config.model';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,12 +16,20 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   selectedGroup: string = '';
   collection: any;
-  contacts = new Array(10);
+  public tableConfigData: TableConfig;
   constructor(public router: Router, public dialog: MatDialog, private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
     this.collection = datastoreService.collection('groups');
   }
 
   ngOnInit() {
+    this.tableConfigData = new TableConfig();
+    this.frameTableConfgiData();
+  }
+
+  frameTableConfgiData() {
+    this.tableConfigData.headers = ['a','b','c','d'];
+    this.tableConfigData.data = [{},{},{},{},{}];
+    this.tableConfigData.keys = ['a','b','c'];
   }
 
   openEditorDialog(record, title, actionText1, actionText2) {
@@ -63,6 +73,9 @@ export class DashboardComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+  }
+  updateEntry(e){
+
   }
 
 }

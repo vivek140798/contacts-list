@@ -1,55 +1,30 @@
 @import "../../../assets/scss/_variables.scss";
-.content-wrap{
+.content-wrap {
     margin: 20px 16px 40px 16px;
-    .outer-search-wrap{
+    .outer-search-wrap {
         display: flex;
         justify-content: center;
         @media (max-width: 480px) {
             justify-content: left;
         }
-        .search-wrap{
+        .search-wrap {
             width: 50%;
             position: relative;
             @media (max-width: 480px) {
                 width: 75%;
             }
-            .search-icon{
-                position:absolute;
+            .search-icon {
+                position: absolute;
                 right: 12px;
                 top: 8px;
                 cursor: pointer;
             }
-            .search-bar{
+            .search-bar {
                 height: 40px;
                 width: 100%;
                 border-radius: 10px;
                 padding: 8px;
                 padding-right: 30px;
-            }
-        }
-    }
-    .contacts-wrap{
-        overflow: scroll;
-        &::-webkit-scrollbar {
-            display: none;
-          }
-        -ms-overflow-style: none; 
-        scrollbar-width: none;
-        .modifiers{
-            button{
-                border-radius: 10px;
-                &.edit-btn{
-                    &:hover{
-                        background-color: $blue;
-                        color: white;
-                    }
-                }
-                &.del-btn{
-                    &:hover{
-                        background-color: #f00;
-                        color: white;
-                    }
-                }
             }
         }
     }
