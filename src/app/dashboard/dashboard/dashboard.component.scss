@@ -59,6 +59,23 @@
           }
         -ms-overflow-style: none; 
         scrollbar-width: none;
+        .modifiers{
+            button{
+                border-radius: 10px;
+                &.edit-btn{
+                    &:hover{
+                        background-color: $blue;
+                        color: white;
+                    }
+                }
+                &.del-btn{
+                    &:hover{
+                        background-color: #f00;
+                        color: white;
+                    }
+                }
+            }
+        }
     }
 }
 

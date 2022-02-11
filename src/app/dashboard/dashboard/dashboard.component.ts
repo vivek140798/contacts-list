@@ -11,6 +11,7 @@ import { UserService } from 'kinvey-angular-sdk';
 export class DashboardComponent implements OnInit {
   selectedGroup:string = '';
   collection: any;
+  contacts = new Array(10);
   constructor(private userService: UserService, datastoreService: DataStoreService, private UserDataService: UserDataService) {
     this.collection = datastoreService.collection('groups');
   }
